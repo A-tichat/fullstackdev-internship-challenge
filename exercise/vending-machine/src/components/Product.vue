@@ -1,0 +1,70 @@
+<template>
+  <div class="box-contranier">
+    <b-jumbotron>
+      <h2>{{ currentProduct.name }}</h2>
+      <b-img
+        thumbnail
+        fluid
+        :src="currentProduct.image"
+        :alt="currentProduct.name"
+        rounded="circle"
+        style="width: 150px; height: 130px; margin-bottom: 20px"
+      ></b-img>
+      <h4>Price: {{ currentProduct.price }}</h4>
+      <div>
+        <b-button
+          type="submit"
+          id="show-btn"
+          @click="modalShow = !modalShow"
+          variant="success"
+          href="#"
+          v-if="isCanBuy"
+          size="lg"
+        >
+          Buy
+        </b-button>
+        <b-button variant="success" href="#" v-else size="lg" disabled>
+          Buy
+        </b-button>
+        <b-modal
+          id="modal-submit-product"
+          v-model="modalShow"
+          centered
+          :title="currentProduct.name"
+          @ok="confirmProduct"
+          ok-only
+        >
+          <p v-if="!currentProduct.in_stock">
+            Sorry, this product out of stock!
+          </p>
+          <p v-else-if="coins < currentProduct.price">
+            Sorry, Don't have enough coins!
+          </p>
+          <p v-else>Thank you!</p>
+        </b-modal>
+      </div>
+    </b-jumbotron>
+  </div>
+</template>
+
+
+<script>
+export default {
+  name: "Product",
+  props: {
+    coins: Number,
+    currentProduct: Object,
+    isCanBuy: Boolean,
+  },
+  data() {
+    return {
+      modalShow: false,
+    };
+  },
+  methods: {
+    confirmProduct() {
+      this.$emit("buying", this.currentProduct);
+    },
+  },
+};
+</script>
