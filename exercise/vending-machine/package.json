@@ -8,7 +8,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "postinstall": "npm run build",
-    "start": "node server.js"
+    "start": "npm run serve"
   },
   "dependencies": {
     "bootstrap": "^4.5.2",
