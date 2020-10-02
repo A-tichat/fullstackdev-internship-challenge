@@ -1,6 +1,7 @@
 {
   "name": "vending-machine",
   "version": "0.1.0",
+  "description": "A Vue.js project",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
