@@ -1,16 +1,16 @@
 <template>
   <div class="box-contranier">
     <b-jumbotron>
-      <h2>{{ currentProduct.name }}</h2>
+      <h3>{{ currentProduct.name }}</h3>
       <b-img
         thumbnail
         fluid
         :src="currentProduct.image"
         :alt="currentProduct.name"
         rounded="circle"
-        style="width: 150px; height: 130px; margin-bottom: 20px"
+        style="width: 8vw; height: 14vh; margin-bottom: 2%"
       ></b-img>
-      <h4>Price: {{ currentProduct.price }}</h4>
+      <h5>Price: {{ currentProduct.price }}</h5>
       <div>
         <b-button
           type="submit"
